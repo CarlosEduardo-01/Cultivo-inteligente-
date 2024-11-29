@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1523541001-5e914a24b816?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080'); /* Imagem de fundo com tema de plantas */
+    background-size: cover;
+    color: #333;
+}
+
+header {
+    background-color: rgba(255, 193, 7, 0.9); /* Amarelo claro */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-bottom: 4px solid #FF9800; /* Amarelo escuro */
+}
+
+header button {
+    background-color: #FFC107; /* Amarelo */
+    color: #333; /* Texto escuro */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+header button:hover {
+    background-color: #FFB300; /* Amarelo escuro ao passar o mouse */
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.category h3 {
+    color: #FF9800; /* Amarelo escuro */
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+}
+
+.modal .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #FF9800; /* Amarelo escuro */
+    transition: color 0.3s;
+}
+
+.modal .close:hover {
+    color: #FFC107; /* Amarelo ao passar o mouse */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #FF9800; /* Amarelo escuro */
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus {
+    border-color: #FFC107; /* Amarelo claro ao focar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+#commentSection {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#commentInput {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    transition: border-color 0.3s ease;
+}
+
+#commentInput:focus {
+    border-color: #FF9800; /* Amarelo escuro */
+    outline: none;
+    box-shadow: 0 0 4px rgba(255, 193, 7, 0.4);
+}
+
+#usernameInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+#usernameInput:focus {
+    border-color: #FF9800; /* Amarelo escuro */
+    outline: none;
+    box-shadow: 0 0 4px rgba(255, 193, 7, 0.4);
+}
+
+#commentsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#commentsTable th, #commentsTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#commentsTable th {
+    background-color: #FF9800; /* Amarelo escuro */
+    color: white;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-rolling {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 300px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    padding: 10px;
+    border: 2px solid #FF9800; /* Adiciona borda amarela escura */
+}
+
+.comment-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.comment-item p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.comment-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 5px;
+}
+
+.comment-actions button {
+    background-color: #FF9800; /* Amarelo escuro */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-actions button:hover {
+    background-color: #FFC107; /* Amarelo claro ao passar o mouse */
+}
+
+/* Estilo para a imagem decorativa */
+.decorative-image {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    opacity: 0.7; /* Ajusta a opacidade para não distrair */
+}

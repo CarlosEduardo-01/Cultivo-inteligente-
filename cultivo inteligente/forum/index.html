@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum Cultivo Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Fórum Cultivo Inteligente</h1>
+        
+    </header>
+
+    <main id="forum">
+        <section class="category">
+            <h3>Bem-vindo ao Fórum Cultivo Inteligente</h3>
+            <p>Um fórum para aprender e discutir sobre plantio e deixar sua vida mais sustentável.</p>
+        </section>
+    </main>
+
+    <div id="commentSection">
+        <h3>Comentários</h3>
+        <input type="text" id="usernameInput" placeholder="Seu nome..." required>
+        <textarea id="commentInput" placeholder="Escreva seu comentário..."></textarea>
+        <button onclick="postComment()">Postar</button>
+        <table id="commentsTable">
+            <thead>
+                <tr>
+                    <th>Avatar</th>
+                    <th>Nome</th>
+                    <th>Comentário</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="comments"></tbody>
+        </table>
+    </div>
+
+    <div class="comment-rolling" id="rollingComments"></div>
+
+    <!-- Modal de Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2 style="color: #FF9800;">Login</h2>
+            <input type="text" id="loginUsername" placeholder="Usuário" required>
+            <input type="password" id="loginPassword" placeholder="Senha" required>
+            <button onclick="login()">Entrar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegister()">&times;</span>
+            <h2 style="color: #FF9800;">Registrar</h2>
+            <input type="text" id="registerUsername" placeholder="Usuário" required>
+            <input type="password" id="registerPassword" placeholder="Senha" required>
+            <input type="file" id="avatarInput" accept="image/*">
+            <button onclick="register()">Registrar</button>
+        </div>
+    </div>
+
+    <script>
+        
+
+        function postComment() {
+            const usernameInput = document.getElementById('usernameInput');
+            const commentInput = document.getElementById('commentInput');
+            const commentsContainer = document.getElementById('comments');
+            const rollingCommentsContainer = document.getElementById('rollingComments');
+
+            const newComment = document.createElement('tr');
+            newComment.innerHTML = `
+                <td><img src="avatar.png" alt="Avatar" class="avatar"></td>
+                <td>${usernameInput.value || 'Usuário'}</td>
+                <td>${commentInput.value}</td>
+                <td>${new Date().toLocaleString()}</td>
+                <td class="comment-actions">
+                    <button onclick="editComment(this)">Editar</button>
+                    <button onclick="deleteComment(this)">Excluir</button>
+                </td>
+            `;
+
+            commentsContainer.appendChild(newComment);
+            rollingCommentsContainer.innerHTML += `<div class="comment-item"><img src="avatar.png" alt="Avatar" class="avatar"><p>${usernameInput.value || 'Usuário'}: ${commentInput.value}</p></div>`;
+            commentInput.value = '';
+            usernameInput.value = ''; // Limpa o campo de nome após o envio
+        }
+
+        function editComment(button) {
+            const commentRow = button.closest('tr');
+            const commentCell = commentRow.children[2];
+            const newComment = prompt('Editar comentário:', commentCell.innerHTML);
+            if (newComment !== null) {
+                commentCell.innerHTML = newComment;
+            }
+        }
+
+        function deleteComment(button) {
+            const commentRow = button.closest('tr');
+            commentRow.remove();
+        }
+
+        
+    </script>
+</body>
+</html>

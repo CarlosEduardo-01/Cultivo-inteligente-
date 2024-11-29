@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Basic -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<!-- Site Metas -->
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title> login</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="css/images/logocultivo.png">
+<script>
+	function confereSenha(){
+		const senha = document.querySelector('input[name=senha]');
+		const confirma = document.querySelector('input[name=confirma]');
+
+		if (confirma.value === senha.value) {
+			confirma.setCustomValidity('');
+		} else {
+			confirma.setCustomValidity('Senhas não conferem');
+		}
+	}
+
+	
+</script>
+</head>
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Cadastrar</label>
+					<input type="text" name="txt" placeholder="Username" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+                    <input type="password" name="senha" placeholder="Password" required onchange='confereSenha()'>
+					<input type="password" name="confirma" placeholder=" Confirm Password" required onchange='confereSenha()'>
+					<button>Cadastrar</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true">Entrar</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="senha" placeholder="Password" required="">				
+					<button>Entrar</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>
